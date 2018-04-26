@@ -31,14 +31,17 @@ public class ExpenseEntryController implements Initializable{
 	@FXML
 	private TextField yearText;
 	
+	ExpenseStorage storage;
+	
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+	public void initialize(URL arg0, ResourceBundle arg1) 
+	{
+		storage = new ExpenseStorage();
 	}
 	
 	@FXML
-	public void saveButtonClick(ActionEvent event) throws IOException {
+	public void saveButtonClick(ActionEvent event) throws IOException 
+	{
 		
 		int day = Integer.parseInt(dayText.getText());
 		int month = Integer.parseInt(monthText.getText());
@@ -48,7 +51,8 @@ public class ExpenseEntryController implements Initializable{
 		String reason = reasonText.getText();
 		
 		Expense e = new Expense(day, month, year, value, reason);
-
+		
+		storage.addExpense(e);
 	}
 	
 
